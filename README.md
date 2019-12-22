@@ -14,7 +14,7 @@ Utilizing social engineering to put passwords into your hands.
 # Troubleshooting
 <ul>
   <li>Can't Connect to AP - If you can't connect to the generated FakeAP, try running the xen0 script again</li>
-  <li>Device not found error in "Fake AP" terminal, make sure that there's an at0 interface in your iwconfig output</li>
+  <li>Device not found error in "Fake AP" terminal - make sure that there's an at0 interface in your iwconfig output</li>
   Email iamnotewell369@gmail.com for queries.
 </ul>
 
