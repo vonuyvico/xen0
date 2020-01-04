@@ -8,9 +8,9 @@ Utilizing social engineering to put passwords into your hands.
 `chmod +x xen0.sh`<br>
 
 # Usage
-`
-./xen0.sh
-`
+`sudo bash`<br>
+`./xen0.sh`
+
 # Troubleshooting
 <ul>
   <li>Can't Connect to AP - If you can't connect to the generated FakeAP, try running the xen0 script again</li>
