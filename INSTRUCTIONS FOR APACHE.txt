@@ -1,3 +1,6 @@
+PHPMYADMIN Setup
+- Make a new user in your phpMyAdmin GUI with username, "newuser" and password "password"
+
 IF YOU WANT TO EDIT THE LOGO IN THE CAPTIVE PORTAL (FAKE LOGIN PAGE)
 SIMPLY COPY ANY IMAGE FROM images/ TO site/ AND RENAME THE NEWLY COPIED IMAGE TO filp.jpeg (case-sensitive)
 
