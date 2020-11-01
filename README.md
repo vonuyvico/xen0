@@ -19,4 +19,4 @@ Utilizing social engineering to put passwords into your hands.
 </ul>
 
 # Disclaimer
-This script is meant to be used for security purposes or for the networks that you own. Do not use this script for hacking into networks you do not own. Please do comply with the laws in your country because the developer would not be responsible for any misuse.
+This script is meant to be used for security purposes or for the networks that you own. Do not use this script for exploiting into networks you do not own. Please do comply with the laws in your country because the developer would not be responsible for any misuse.
